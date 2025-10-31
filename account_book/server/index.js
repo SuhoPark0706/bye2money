@@ -12,10 +12,10 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(cors());
-// app.use(express.json()); // this also works; then you can remove body-parser
 app.use(bodyParser.json());
 
 const DATA_PATH = path.join(__dirname, "../src/data/tx.sample.json");
+const INCOME_CATEGORIES = new Set(["월급", "기타수입"]);
 
 app.get("/tx", (req, res) => {
   try {
@@ -40,8 +40,9 @@ app.post("/tx", (req, res) => {
     const dateStr = `${yyyy}-${mm}-${dd}`;
     const weekday = now.toLocaleDateString("ko-KR", { weekday: "long" });
 
-    const amt = Number(amount);
-    const signedAmount = isNaN(amt) ? 0 : (amt > 0 ? -amt : amt);
+    const a = Math.abs(Number(amount) || 0);
+    const isIncome = INCOME_CATEGORIES.has(category);
+    const signedAmount = isIncome ? a : -a;
 
     const tx = {
       id: "t" + Date.now(),
@@ -51,7 +52,7 @@ app.post("/tx", (req, res) => {
       content: content || "",
       method: method || "현금",
       amount: signedAmount,
-      type: "expense",
+      type: isIncome ? "income" : "expense",
     };
 
     list.push(tx);

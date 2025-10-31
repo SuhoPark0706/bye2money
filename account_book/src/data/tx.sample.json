@@ -54,23 +54,23 @@
     "type": "income"
   },
   {
-    "id": "t1761890083825",
+    "id": "t1761893388825",
+    "date": "2025-10-31",
+    "weekday": "금요일",
+    "category": "월급",
+    "content": "222222222",
+    "method": "현금",
+    "amount": 2222222222222,
+    "type": "income"
+  },
+  {
+    "id": "t1761893404763",
     "date": "2025-10-31",
     "weekday": "금요일",
     "category": "문화/여가",
-    "content": "a",
-    "method": "현금",
-    "amount": -12,
-    "type": "expense"
-  },
-  {
-    "id": "t1761891132043",
-    "date": "2025-10-31",
-    "weekday": "금요일",
-    "category": "교통",
-    "content": "ssss",
-    "method": "현금",
-    "amount": -3333,
+    "content": "33333",
+    "method": "신용카드",
+    "amount": -333333333,
     "type": "expense"
   }
 ]
